@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace SqlExamples.InsertComparison
+namespace SqlExamples.BulkToSequentialInsertComparison
 {
     public class BulkCopyCatSaver : ISaveCats
     {

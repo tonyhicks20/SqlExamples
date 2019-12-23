@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SqlExamples.InsertComparison
+namespace SqlExamples.BulkToSequentialInsertComparison
 {
     public class Cat
     {

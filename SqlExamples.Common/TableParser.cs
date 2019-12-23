@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SqlExamples.InsertComparison
+namespace SqlExamples.Common
 {
     //Code taken from : https://stackoverflow.com/questions/856845/how-to-best-way-to-draw-table-in-console-app-c
     public static class TableParser

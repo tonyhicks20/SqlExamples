@@ -4,8 +4,9 @@ using System.Linq;
 using System.Collections.Concurrent;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using SqlExamples.Common;
 
-namespace SqlExamples.InsertComparison
+namespace SqlExamples.BulkToSequentialInsertComparison
 {
     internal class Program
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SqlExamples.InsertComparison
+namespace SqlExamples.BulkToSequentialInsertComparison
 {
     public interface ISaveCats
     {

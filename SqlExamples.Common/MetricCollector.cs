@@ -1,4 +1,4 @@
-﻿namespace SqlExamples.InsertComparison
+﻿namespace SqlExamples.Common
 {
     public class MetricCollector
 
