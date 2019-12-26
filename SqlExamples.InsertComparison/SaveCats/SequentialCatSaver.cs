@@ -1,10 +1,15 @@
 ﻿using Dapper;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace SqlExamples.BulkToSequentialInsertComparison
 {
+    
+    [Display(Name = "Sequential", Order = 0)]
     public class SequentialCatSaver : ISaveCats
     {
         private readonly string _connectionString;
@@ -14,20 +19,24 @@ namespace SqlExamples.BulkToSequentialInsertComparison
             _connectionString = connectionString;
         }
 
-        public void SaveCats(IEnumerable<Cat> cats)
+        public virtual void SaveCats(IEnumerable<Cat> cats)
         {
             int count = 0;
             foreach (var cat in cats)
             {
-                using (SqlConnection connection = new SqlConnection(_connectionString))
-                {
-                    connection.Open();
-                    connection.Execute("INSERT INTO Cat (Id, Color, FavoriteSound,Gender) VALUES (@Id, @Color, @FavoriteSound,@Gender)", cat);
-                }
-
+                SaveCat(cat);
                 string output = $"; Object Saved : {++count}   ";
                 Console.Write(output);
                 Console.SetCursorPosition(Console.CursorLeft - output.Length, Console.CursorTop);
+            }
+        }
+        
+        protected void SaveCat(Cat cat)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                connection.Execute("INSERT INTO Cat (Id, Color, FavoriteSound,Gender) VALUES (@Id, @Color, @FavoriteSound,@Gender)", cat);
             }
         }
     }

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace SqlExamples.BulkToSequentialInsertComparison
 {
+    [Display(Name = "Bulk", Order = 2)]
     public class BulkCopyCatSaver : ISaveCats
     {
         private readonly string _connectionString;
