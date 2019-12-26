@@ -1,27 +1,36 @@
-﻿namespace SqlExamples.Common
+﻿using System.Collections.Generic;
+
+namespace SqlExamples.Common
 {
     public class MetricCollector
 
     {
 
-        public MetricCollector(params string[] keys)
+        public MetricCollector(string id)
         {
-            Keys = keys;
+            Id = id;
         }
 
-        private long count = 0;
-        private long sum = 0;
+        private long _sum = 0;
 
-        public double Average { get => sum / count; }
+        public double Average => _sum / Count;
         public long Max { get; private set; }
         public long Min { get; private set; } = 9999999;
+        public string Id { get; }
 
-        public string[] Keys { get; }
+        public long Count { get; private set; }
+
+        public int DisplayOrder { get; set; }
+        
+        public string DisplayName { get; set; }
+
+        public Dictionary<string, object> AdditionalProperties { get; } = new Dictionary<string, object>(); 
+        
 
         public void SetValue(long value)
         {
-            ++count;
-            sum += value;
+            ++Count;
+            _sum += value;
             if (value < Min)
                 Min = value;
             if (value > Max)
